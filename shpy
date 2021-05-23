@@ -420,7 +420,7 @@ _shpySetSpyStatusCodeSequence() {
 
 # Break path caching to ensure spies come first in the path
 _shpy_break_path_cache() {
-    PATH="$PATH"
+    PATH="$PATH:"
     export PATH
 }
 
