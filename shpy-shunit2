@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# shellcheck disable=SC3043
 
 assertCallCount() {
     if [ $# -lt 2 ] || [ $# -gt 3 ]; then
@@ -25,7 +26,6 @@ assertCalledWith() {
         return 1
     fi
 
-    # shellcheck disable=SC2039
     local status_code actual_call current_spy_call
 
     wasSpyCalledWith "$@"
@@ -55,7 +55,6 @@ assertCalledWith_() {
         return 1
     fi
 
-    # shellcheck disable=SC2039
     local message status_code
 
     message=$1
