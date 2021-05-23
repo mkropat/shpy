@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# shellcheck disable=SC3043
 
 # Export the shpy version in the environment
 SHPY_VERSION=1.0.0
@@ -14,7 +15,6 @@ fi
 # `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `
 
 createSpy() {
-    # shellcheck disable=SC2039
     local usage status_codes outputs_count outputs_dir errors_count errors_dir spy_name
 
     usage="Usage: createSpy [[-r status] [-o output] [-e output] [-u] ...] name
@@ -122,7 +122,6 @@ wasSpyCalledWith() {
         return 1
     fi
 
-    # shellcheck disable=SC2039
     local arg_index arg_count current_spy_call_index spy_name spy_path
 
     spy_name=$1
@@ -165,7 +164,6 @@ getArgsForCall() {
         return 1
     fi
 
-    # shellcheck disable=SC2039
     local spy_name spy_path call_index arg_index arg all_args
 
     spy_name=$1
@@ -278,7 +276,6 @@ _shpyResetSpy() {
 # Creates an executable shell script for a spy in `$_shpy_spies_dir/bin/`
 # $1 - Name of the spy to create an executable for
 _shpyCreateSpyExecutable() {
-    # shellcheck disable=SC2039
     local spy_file
 
     spy_file="$_shpy_spies_dir/bin/$1"
@@ -333,7 +330,6 @@ _shpyRunSpy() {
 # $1 - Name of the spy
 # $... - Arguments passed to the spy
 _shpySaveSpyCallArgs() {
-    # shellcheck disable=SC2039
     local arg arg_index current_call_index spy_call_path
 
     # The current call index is the total number of calls before this one
@@ -358,7 +354,6 @@ _shpySaveSpyCallArgs() {
 # Sends output to stdout for the latest call of a spy
 # $1 - Name of the spy to print output
 _shpyPrintSpyOutput() {
-    # shellcheck disable=SC2039
     local current_call_index outputs_dir output_fixture
 
     # Specify the outputs directory and current call index
@@ -380,7 +375,6 @@ _shpyPrintSpyOutput() {
 # Sends output to stderr for the latest call of a spy
 # $1 - Name of the spy to print output
 _shpyPrintSpyErrorOutput() {
-    # shellcheck disable=SC2039
     local current_call_index errors_dir error_fixture
 
     # Specify the errors directory and current call index
@@ -402,7 +396,6 @@ _shpyPrintSpyErrorOutput() {
 # Returns the status code for the latest call of a spy
 # $1 - Name of the spy to return the status code for
 _shpyGetSpyReturnStatus() {
-    # shellcheck disable=SC2039
     local status_codes status_code
 
     eval status_codes="\$_shpy_$1_status_codes"
